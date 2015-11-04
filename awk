@@ -6,7 +6,7 @@ awk -F "/" '{print $2 " " $3}' $readings | \
 awk '{
 for (i=0; i<5; i++)
 {
-	if ( $1 == i+1 )
+	if ( $1 == i )
 	{
 		sum[i] = sum[i] + $2
 		count[i]++
@@ -15,6 +15,7 @@ for (i=0; i<5; i++)
     }
 END {
 for (i=1; i<=5; i++){
+	average[i] = sum[i]\count[i]
 	printf "%d %.0f\n",i,average[i]
 	}
 }' > tmp
